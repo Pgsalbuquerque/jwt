@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option go_package = "/pb";
+
+message Token {
+    string token = 1;
+}
+
+message ID {
+    string ID = 1;
+}
+
+message Validate {
+    bool validate = 1;
+}
+
+service SendToken {
+    rpc RequestToken (ID) returns (Token){}
+}
+
+service SendID {
+    rpc RequestID (Token) returns (ID){}
+}
+
+service sendValidate {
+    rpc RequestValidate (Token) returns (Validate){}
+}
